@@ -108,12 +108,70 @@ app.get('/user', (req,res) => {
     // res.send(req.protocol)
     // res.send(req.secure)
     res.send(req.route)
+})
 
 
 
 
 
+/*
+______Methods_______
+req.accepts     --> HTML, JSON, XML
+req.get
+req.is          --> JSON, form data or plain text
+req.range
+*/
 
+
+
+app.get('/about/', (req,res) => {
+    if(req.accepts('html'))
+    {
+        res.send("<h1>Hello HTML</h1>")
+    }
+    else if(req.accepts('json'))
+    {
+        res.send({message : "messageHello JSON"})
+    }
+    else if(req.accepts('xml'))
+    {
+        res.send("<message>Hello XML</message>")
+    }
+    else
+    {
+        res.send("Content type not supported")
+    }
+})
+
+
+
+
+app.get('/get-about/', (req,res) => {
+    // res.send(req.headers)   
+    // res.send(req.headers.host)   
+    // res.send(req.get("host"))   
+    // res.send(req.get("connection"))   
+    res.send(req.get("accept"))   
 
 })
+
+
+
+
+app.post('/is-about/', (req,res) => {
+    if(req.is('text/html'))
+    {
+        res.send("Valid HTML")
+    }
+    else if(req.is('application/json'))
+    {
+        res.send({message : "Valid JSON Data"})
+    }
+    else
+    {
+        res.status(400).send("Unsuported Content-type.")
+    }
+})
+
+
 

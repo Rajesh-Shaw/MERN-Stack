@@ -1,0 +1,63 @@
+<%- include('header') %> 
+    
+    <div class="row">
+        <h1><%= title %> </h1>
+    </div>
+
+    <!-- if condition -->
+    <div class="row">
+        <% if(message){ %> 
+        <p><%= message %></p> 
+        <% }else{ %> 
+        <span>There is no Messae</span>
+        <% } %> 
+    </div>
+
+
+
+   <!-- Loop -->   
+   <% // let items= ['Apple', 'Banna', 'Cherry'] %> 
+   
+   <div class="row">
+        <ul>
+            <% items.forEach( item => {%> 
+            <li><%= item _%> </li>
+            <% })  %> 
+        </ul>
+   </div>
+
+
+
+   <!-- table, Loop -->
+    <div class="row">
+        <div class="col-6">
+
+            <table class="table" width="500px" >
+            <% users.forEach( user => {%> 
+            <tr>
+                <td><%= user.name _%></td>
+                <td><%= user.age _%></td>
+                <td><%= user.city _%></td>
+            </tr>
+            <% })  %> 
+        </table>
+
+
+        </div>
+
+        <div class="col-6">
+            <img src="./images/flower.jpg" alt="Flower Image">
+        </div>
+    </div>
+
+   
+
+
+
+    
+
+
+
+
+
+  <%- include('footer') %> 
